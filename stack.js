@@ -36,7 +36,7 @@ const peek = list => {
   if (list.top === null) {
     return null;
   }
-  console.log(list.top.data);
+  return list.top.data;
 };
 
 const display = list => {
@@ -68,7 +68,7 @@ main();
 
 // PALINDROME
 
-// const is_palindrome = sentence => {
+const is_palindrome = sentence => {
 //   sentence = sentence.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
 //   const forward = new Stack();
 //   const backward = new Stack();
@@ -90,3 +90,137 @@ main();
 // console.log(is_palindrome('A man, a plan, a canal: Panama'));
 // console.log(is_palindrome('1001'));
 // console.log(is_palindrome('Tauhida'));
+
+// MATCHING PARENTHESES
+
+// const matchingParens = code => {
+//   code = code.replace(/[^()]/g, '');
+//   const check = new Stack();
+//   for (let i=0; i<code.length; i++) {
+//     if (code[i] === '(') {
+//       check.push('(');
+//     } if (code[i] === ')') {
+//       const removedParen = check.pop();
+//       if (removedParen === null) {
+//         return false;
+//       }
+//     }
+//   }
+//   if (check.top !== null) {
+//     return false;
+//   }
+//   return true;
+// };
+
+// const matchingBrackets= code => {
+//   code = code.replace(/[^()[\]{}]/g, '');
+//   const checkBrackets = new Stack();
+//   for (let i=0; i<code.length; i++) {
+//     if (code[i] === '(') {
+//       checkBrackets.push('(');
+//     } if (code[i] === ')') {
+//       const removedParen = checkBrackets.pop();
+//       if (removedParen === '{') {
+//         throw new Error('Was expecting } but found a )');
+//       }
+//       if (removedParen === '[') {
+//         throw new Error('Was expecting ] but found a )');
+//       }
+//     }
+//     if (code[i] === '{') {
+//       checkBrackets.push('{');
+//     } if (code[i] === '}') {
+//       const removedParen = checkBrackets.pop();
+//       if (removedParen === '(') {
+//         throw new Error('Was expecting ) but found a }');
+//       }
+//       if (removedParen === '[') {
+//         throw new Error('Was expecting ] but found a }');
+//       }
+//     }
+//     if (code[i] === '[') {
+//       checkBrackets.push('[');
+//     } if (code[i] === ']') {
+//       const removedParen = checkBrackets.pop();
+//       if (removedParen === '(') {
+//         throw new Error('Was expecting ) but found a ]');
+//       }
+//       if (removedParen === '{') {
+//         throw new Error('Was expecting } but found a ]');
+//       }
+//     }
+//   }
+//   if (checkBrackets.top !== null) {
+//     return false;
+//   }
+//   return true;
+// };
+
+const matchingCode= code => {
+  code = code.replace(/[^"'()[\]{}]/g, '');
+  const checkCode = new Stack();
+  let quote = false;
+
+  for (let i=0; i<code.length; i++) {
+    if (!quote) {
+      if (code[i] === '"') {
+        checkCode.push('"');
+        quote = true;
+      } if (code[i] === '\'') {
+        checkCode.push('\'');
+        quote = true;
+      }
+
+      if (code[i] === '(') {
+        checkCode.push('(');
+      } if (code[i] === ')') {
+        const removedParen = checkCode.pop();
+        if (removedParen === '{') {
+          throw new Error('Was expecting } but found a )');
+        }
+        if (removedParen === '[') {
+          throw new Error('Was expecting ] but found a )');
+        }
+      }
+      if (code[i] === '{') {
+        checkCode.push('{');
+      } if (code[i] === '}') {
+        const removedParen = checkCode.pop();
+        if (removedParen === '(') {
+          throw new Error('Was expecting ) but found a }');
+        }
+        if (removedParen === '[') {
+          throw new Error('Was expecting ] but found a }');
+        }
+      }
+      if (code[i] === '[') {
+        checkCode.push('[');
+      } if (code[i] === ']') {
+        const removedParen = checkCode.pop();
+        if (removedParen === '(') {
+          throw new Error('Was expecting ) but found a ]');
+        }
+        if (removedParen === '{') {
+          throw new Error('Was expecting } but found a ]');
+        }
+      }
+    } else {
+      if(code[i] === peek(checkCode)) {
+        checkCode.pop();
+        quote = false;
+      }
+    } 
+  }
+
+  if (checkCode.top !== null) {
+    return false;
+  }
+
+  return true;
+};
+
+// console.log(matchingBrackets('{hello("{samuel"})(gould])[]}'));
+
+// console.log(matchingCode('(45())""[]{}'));
+// console.log(matchingCode('(()")"[)]'));
+// console.log(matchingCode('{hello("{samuel")(gould)[]}'));
