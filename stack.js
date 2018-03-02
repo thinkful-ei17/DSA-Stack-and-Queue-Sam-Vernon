@@ -50,7 +50,7 @@ const display = stack => {
   }
 };
 
-const main = () => {
+// const main = () => {
   // const starTrek = new Stack();
   // starTrek.push('Kirk');
   // starTrek.push('Spock');
@@ -60,11 +60,11 @@ const main = () => {
   // display(starTrek);
   // console.log(starTrek.pop());
   // console.log(starTrek.pop());
-};
+// };
 
 // Kirk is the first item in my stack.
 
-main();
+// main();
 
 // PALINDROME
 
@@ -289,3 +289,46 @@ main();
 // sortStack.push(-1);
 
 // sort(sortStack);
+
+class QueueStacks {
+  constructor() {
+    this.enqueueStack = new Stack();
+    this.dequeueStack = new Stack();
+  }
+
+  enqueue(data) {
+    if (peek(this.enqueueStack) === null && peek(this.dequeueStack) === null) {
+      this.dequeueStack.push(data);
+    } else {
+      this.enqueueStack.push(data);
+    }
+  }
+  
+  dequeue() {
+    if (peek(this.enqueueStack) === null && peek(this.dequeueStack) === null) {
+      return null;
+    } else if (peek(this.dequeueStack) === null) {
+      while (peek(this.enqueueStack) !== null) {
+        this.dequeueStack.push(this.enqueueStack.pop());
+      }
+    }
+    console.log(this.dequeueStack.pop());
+  }
+}
+
+const test = () => {
+  const starTrekQ = new QueueStacks();
+  console.log(starTrekQ);
+  starTrekQ.enqueue('Kirk');
+  starTrekQ.enqueue('Spock');
+  starTrekQ.enqueue('Uhura');
+  starTrekQ.enqueue('Sulu');
+  starTrekQ.enqueue('Checkov');
+  console.log(starTrekQ);
+  starTrekQ.dequeue();
+  console.log(starTrekQ);
+  starTrekQ.dequeue();
+  console.log(starTrekQ);
+}
+
+test();

@@ -59,18 +59,18 @@ const display = queue => {
 };
 
 const main = () => {
-  const starTrekQ = new Queue();
-  starTrekQ.enqueue('Kirk');
-  starTrekQ.enqueue('Spock');
-  starTrekQ.enqueue('Uhura');
-  starTrekQ.enqueue('Sulu');
-  starTrekQ.enqueue('Checkov');
-  // console.log(peek(starTrekQ));
-	display(starTrekQ);
-	starTrekQ.dequeue();
-	starTrekQ.dequeue();
-	console.log('-----------------------');
-	display(starTrekQ);
+  // const starTrekQ = new Queue();
+  // starTrekQ.enqueue('Kirk');
+  // starTrekQ.enqueue('Spock');
+  // starTrekQ.enqueue('Uhura');
+  // starTrekQ.enqueue('Sulu');
+  // starTrekQ.enqueue('Checkov');
+  // // console.log(peek(starTrekQ));
+	// display(starTrekQ);
+	// starTrekQ.dequeue();
+	// starTrekQ.dequeue();
+	// console.log('-----------------------');
+	// display(starTrekQ);
 };
 
 main();
