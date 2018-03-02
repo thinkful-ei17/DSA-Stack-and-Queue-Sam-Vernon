@@ -68,7 +68,7 @@ main();
 
 // PALINDROME
 
-const is_palindrome = sentence => {
+// const is_palindrome = sentence => {
 //   sentence = sentence.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
 //   const forward = new Stack();
 //   const backward = new Stack();
@@ -156,71 +156,136 @@ const is_palindrome = sentence => {
 //   return true;
 // };
 
-const matchingCode= code => {
-  code = code.replace(/[^"'()[\]{}]/g, '');
-  const checkCode = new Stack();
-  let quote = false;
+// const matchingCode = code => {
+//   code = code.replace(/[^"'()[\]{}]/g, '');
+//   const checkCode = new Stack();
+//   let quote = false;
 
-  for (let i=0; i<code.length; i++) {
-    if (!quote) {
-      if (code[i] === '"') {
-        checkCode.push('"');
-        quote = true;
-      } if (code[i] === '\'') {
-        checkCode.push('\'');
-        quote = true;
-      }
+//   for (let i=0; i<code.length; i++) {
+//     if (!quote) {
+//       if (code[i] === '"') {
+//         checkCode.push('"');
+//         quote = true;
+//       } if (code[i] === '\'') {
+//         checkCode.push('\'');
+//         quote = true;
+//       }
 
-      if (code[i] === '(') {
-        checkCode.push('(');
-      } if (code[i] === ')') {
-        const removedParen = checkCode.pop();
-        if (removedParen === '{') {
-          throw new Error('Was expecting } but found a )');
-        }
-        if (removedParen === '[') {
-          throw new Error('Was expecting ] but found a )');
-        }
-      }
-      if (code[i] === '{') {
-        checkCode.push('{');
-      } if (code[i] === '}') {
-        const removedParen = checkCode.pop();
-        if (removedParen === '(') {
-          throw new Error('Was expecting ) but found a }');
-        }
-        if (removedParen === '[') {
-          throw new Error('Was expecting ] but found a }');
-        }
-      }
-      if (code[i] === '[') {
-        checkCode.push('[');
-      } if (code[i] === ']') {
-        const removedParen = checkCode.pop();
-        if (removedParen === '(') {
-          throw new Error('Was expecting ) but found a ]');
-        }
-        if (removedParen === '{') {
-          throw new Error('Was expecting } but found a ]');
-        }
-      }
-    } else {
-      if(code[i] === peek(checkCode)) {
-        checkCode.pop();
-        quote = false;
-      }
-    } 
-  }
+//       if (code[i] === '(') {
+//         checkCode.push('(');
+//       } if (code[i] === ')') {
+//         const removedParen = checkCode.pop();
+//         if (removedParen === '{') {
+//           throw new Error('Was expecting } but found a )');
+//         }
+//         if (removedParen === '[') {
+//           throw new Error('Was expecting ] but found a )');
+//         }
+//       }
+//       if (code[i] === '{') {
+//         checkCode.push('{');
+//       } if (code[i] === '}') {
+//         const removedParen = checkCode.pop();
+//         if (removedParen === '(') {
+//           throw new Error('Was expecting ) but found a }');
+//         }
+//         if (removedParen === '[') {
+//           throw new Error('Was expecting ] but found a }');
+//         }
+//       }
+//       if (code[i] === '[') {
+//         checkCode.push('[');
+//       } if (code[i] === ']') {
+//         const removedParen = checkCode.pop();
+//         if (removedParen === '(') {
+//           throw new Error('Was expecting ) but found a ]');
+//         }
+//         if (removedParen === '{') {
+//           throw new Error('Was expecting } but found a ]');
+//         }
+//       }
+//     } else {
+//       if(code[i] === peek(checkCode)) {
+//         checkCode.pop();
+//         quote = false;
+//       }
+//     } 
+//   }
 
-  if (checkCode.top !== null) {
-    return false;
-  }
+//   if (checkCode.top !== null) {
+//     return false;
+//   }
 
-  return true;
-};
+//   return true;
+// };
 
 // console.log(matchingBrackets('{hello("{samuel"})(gould])[]}'));
 
 // console.log(matchingCode('(45())""[]{}'));
 // console.log(matchingCode('(()")"[)]'));
 // console.log(matchingCode('{hello("{samuel")(gould)[]}'));
+
+// SORT
+
+// const sort = stack => {
+//   let firstSortingStack = new Stack();
+//   let secondSortingStack = new Stack();
+
+//   let number = stack.pop();
+//   while (number !== null) {
+//     if (peek(stack) === null) {
+//       stack.push(number);
+//       number = null;
+//     } else if (number > peek(stack)) {
+//       firstSortingStack.push(stack.pop());
+//     } else {
+//       firstSortingStack.push(number);
+//       number = stack.pop();
+//     }
+//   }
+  
+//   while (peek(secondSortingStack) !== null || peek(firstSortingStack) !== null) {
+//     if (peek(firstSortingStack) !== null) {
+//       number = firstSortingStack.pop();
+//       while (number !== null) {
+//         if (peek(firstSortingStack) === null) {
+//           stack.push(number);
+//           number = null;
+//         } else if (number > peek(firstSortingStack)) {
+//           secondSortingStack.push(firstSortingStack.pop());
+//         } else {
+//           secondSortingStack.push(number);
+//           number = firstSortingStack.pop();
+//         }
+//       }
+//     } else {
+//       number = secondSortingStack.pop();
+//       while (number !== null) {
+//         if (peek(secondSortingStack) === null) {
+//           stack.push(number);
+//           number = null;
+//         } else if (number > peek(secondSortingStack)) {
+//           firstSortingStack.push(secondSortingStack.pop());
+//         } else {
+//           firstSortingStack.push(number);
+//           number = secondSortingStack.pop();
+//         }
+//       }
+//     }
+
+//   }
+//   console.log(stack);
+//   console.log(firstSortingStack);
+//   console.log(secondSortingStack);
+// };
+
+// const sortStack = new Stack();
+// sortStack.push(4);
+// sortStack.push(5);
+// sortStack.push(2);
+// sortStack.push(1);
+// sortStack.push(8);
+// sortStack.push(10);
+// sortStack.push(-1);
+
+// sort(sortStack);
