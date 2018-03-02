@@ -329,6 +329,8 @@ const test = () => {
   console.log(starTrekQ);
   starTrekQ.dequeue();
   console.log(starTrekQ);
+  starTrekQ.enqueue('Scotty');
+  console.log(starTrekQ);
 }
 
 test();
