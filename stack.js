@@ -32,18 +32,18 @@ class Stack {
   }
 }
 
-const peek = list => {
-  if (list.top === null) {
+const peek = stack => {
+  if (stack.top === null) {
     return null;
   }
-  return list.top.data;
+  return stack.top.data;
 };
 
-const display = list => {
-  if (list.top === null) {
+const display = stack => {
+  if (stack.top === null) {
     return null;
   }
-  let item = list.top;
+  let item = stack.top;
   while(item !== null) {
     console.log(item.data);
     item = item.next;
